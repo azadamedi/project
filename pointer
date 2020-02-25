@@ -1,0 +1,36 @@
+# include<iostream>
+# include<stdlib.h>
+using namespace std;
+void swap_value(int* x, int* y) {
+	int temp = *x;
+	*x = *y;
+	*y = temp;
+}
+void swap_address(int x, int y) {
+	int* temp1 ;
+	temp1 = &x;
+	 int* temp2 = &y;
+	 cout <<"address befor swap\n"<< temp1 <<"----"<<temp2<< endl;
+	 int* temp3;
+	 temp3 = temp1;
+	 temp1 = temp2;
+	 temp2 = temp3;
+	cout << "address after swap\n" << temp1 << "----" << temp2 << endl;
+
+
+}
+int main()
+{
+	
+	int x=5;
+	int y = 10;
+	printf("befor swap x=%d\n", x);
+	printf("befor swap y=%d\n", y);
+	swap_value(&x, &y);
+	
+		printf("after swap x=%d\n", x);
+		printf("after swap y=%d\n", y);
+		swap_address(x, y);
+		
+	return 0;
+}
