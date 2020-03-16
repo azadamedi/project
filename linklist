@@ -1,0 +1,107 @@
+#include<iostream>
+using namespace std;
+struct node {
+	int data;
+	node* link;
+};
+struct node* start;
+void addbeg(int x) {
+	node* q;
+	q = start;
+	start = new node;
+	start->data = x;
+	start->link = q;
+}
+void addlast(int x) {
+	node* q, * t;
+	if (start == NULL)
+	{
+		start = new node;
+		start->data = x;
+		start->link = NULL;
+	}
+	else { 
+		q = start;
+		while (q->link != NULL)
+		{
+			q = q->link;
+		}
+		t = new node;
+		t->data = x;
+		t->link = NULL;
+		q->link = t;
+
+	}
+}
+void insert(int x) {
+	node* q, * t;
+	int z;
+	q = start;
+	cout << "insert after" << endl;
+	cin >> z;
+	while (q->data!=z)
+	{
+		q=q->link;
+	}
+	t=new node;
+	t->data= x;
+	t->link=q->link;
+	q->link=t;
+
+}
+void delbeg()
+{
+	node* q;
+	q=start;
+
+	if (q==NULL)
+	{
+		cout << "no data in the list!:" << endl;
+	}
+		start =q->link;
+		delete q;
+	
+
+}
+void  display()
+{
+	node* q;
+	q = start;
+	if (q == NULL)
+	{
+		cout << "no data in the list ? " << endl;
+	}
+	while (q != NULL)
+	{
+		cout << " " << q->data;
+		q = q->link;
+	}
+	cout << endl;
+}
+int main()
+{
+	int    i, k;
+	for (i = 0; i < 3; i++)
+	{
+		cout << "Enter the number in beg "<<endl;
+		cin>> k;
+		addbeg(k);
+	}
+	display();
+	for (i = 0; i < 2; i++)
+	{
+		cout << " Enter the number  in Last"<<endl;
+		cin >> k;
+		addlast(k);
+	}
+	display();
+	cout << "insert new value "<<endl;
+	cin >> k;
+	display();
+	insert(k);
+	delbeg();
+	
+	cout << "first element deleted " << endl;
+	display();
+	return 0;
+}
